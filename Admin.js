@@ -73,6 +73,14 @@ class Admin {
     // Logic to delete a staff account
   }
 
+  // Delete staff account
+  addEvent(event, patientId) {
+    if (!staffId || !event || typeof event !== "object") {
+      throw new Error("Invalid event parameters");
+    }
+    // Logic to add event to patients calender
+  }
+
   // Audit Logging
   
   // Log an action performed by admin
