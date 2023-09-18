@@ -1,11 +1,14 @@
+/*
+Holds patient credentials and actions
+*/
 class Admin {
-  constructor(username, password) {
+  constructor(username, password, accessLevel) {
     if (!username || !password) {
       throw new Error("Both username and password are required");
     }
     this.username = username;
     this.password = password; // Note: Password should be hashed and not stored in plaintext
-    this.accessLevel = "admin";
+    this.accessLevel = accessLevel;
   }
 
   // Method to authenticate the admin user

@@ -1,3 +1,6 @@
+/*
+Holds patient Information
+*/
 class Patient {
     constructor(patientId, username, password) {
       if (!patientId || !username || !password) {
