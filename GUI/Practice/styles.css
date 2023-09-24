@@ -15,7 +15,7 @@ body, html {
 .login-box {
     width: 300px;
     padding: 40px;
-    padding-top: 10px;
+    padding-top: 5px;
     font-size: 35px; /* Increase font size */
     position: relative;
     background: #fff;
