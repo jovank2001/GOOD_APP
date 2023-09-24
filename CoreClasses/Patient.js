@@ -2,28 +2,33 @@
 Holds patient Information
 */
 class Patient {
-    constructor(patientId, username, password) {
+    constructor(patientId, password, name, roomNumber, emergencyContactInfo, phone, email, healthCareContact, disabilities) {
       if (!patientId || !username || !password) {
-        throw new Error("Patient ID, username, and password are required");
+        throw new Error("Enter all require patient information");
       }
   
       this.patientId = patientId;
-      this.username = username;
-      this.password = password; // Note: Password should be hashed and not stored in plaintext
-      this.calendar = []; // Array to store calendar events
+      this.password = password;
+      this.roomNumber = roomNumber;
+      this.emergencyContactInfo = emergencyContactInfo;
+      this.phone = phone;
+      this.email = email;
+      this.healthCareContact = healthCareContact;
+      this.disabilities = disabilities;
+      this.eventList = []; // Array to store calendar events
       this.prescriptions = []; // Array to store prescription information
     }
   
     // Add a calendar event
-    addCalendarEvent(event) {
+    addEvent(event) {
       if (!event || typeof event !== "object") {
         throw new Error("Invalid calendar event");
       }
-      this.calendar.push(event);
+      this.eventList.push(event);
     }
   
     // Remove a calendar event
-    removeCalendarEvent(eventId) {
+    removeEvent(eventId) {
       if (!eventId) {
         throw new Error("Event ID is required");
       }
