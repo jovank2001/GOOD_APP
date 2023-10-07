@@ -75,3 +75,61 @@ body, html {
     align-items: center; /* Centers child elements horizontally */
 }
 
+.login-status {
+    margin-top: 10px;
+    color: red; /* for error messages */
+    font-weight: bold;
+    text-align: center;
+}
+
+/* You can even add styles for success messages if desired */
+.login-status.success {
+    color: green;
+}
+
+.screen {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #333;
+    color: #FFF;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar {
+    display: flex;
+    gap: 15px;
+}
+
+.navbar a {
+    color: #FFF;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background-color 0.3s;
+}
+
+.navbar a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+.notification-bell, .profile-icon {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.notifications, .profile {
+    margin-left: 10px;
+}

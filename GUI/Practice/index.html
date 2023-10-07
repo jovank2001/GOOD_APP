@@ -9,7 +9,24 @@
 </head>
 
 <body>
-    <div class="login-container">
+    <header>
+        <div class="header-container">
+            <div class="logo">GOOD APP</div>
+            <nav class="navbar">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <!-- ... other links -->
+            </nav>
+            <div class="notifications">
+                <span class="notification-bell">🔔</span>
+            </div>
+            <div class="profile">
+                <span class="profile-icon">👤</span>
+            </div>
+        </div>
+    </header>
+    <div class="login-container" id="loginContainer">
         <div class="content-box">
             <div class="title-box">
                 <h1>GOOD APP</h1>
@@ -22,10 +39,63 @@
                 <div class="textbox">
                     <input type="password" placeholder="Password" name="password" id="password" required>
                 </div>
+                <div class="login-status" id="loginStatus"></div>
                 <button class="login-btn" onclick="login()">Login</button>
             </div>
         </div>
     </div>
+    
+    <!-- New Home Screen (Initially hidden) -->
+    <div class="home-container" id="homeContainer" style="display: none;">
+        <div class="content-box">
+            <div class="title-box">
+                <h1>Home</h1>
+            </div>
+            <div class="buttons-box">
+                <button onclick="showScreen('screen1')">Button 1</button>
+                <button onclick="showScreen('screen2')">Button 2</button>
+                <button onclick="showScreen('screen3')">Button 3</button>
+                <button onclick="showScreen('screen4')">Button 4</button>
+                <button onclick="showScreen('screen5')">Button 5</button>
+            </div>
+            
+            <div id="screen1" class="screen" style="display:none;">
+                <div class="title-box">
+                    <h1>Button 1</h1>
+                </div>
+                Content of Screen 1
+            </div>
+            
+            <div id="screen2" class="screen" style="display:none;">
+                <div class="title-box">
+                    <h1>Button 2</h1>
+                </div>
+                Content of Screen 2
+            </div>
+            
+            <div id="screen3" class="screen" style="display:none;">
+                <div class="title-box">
+                    <h1>Button 3</h1>
+                </div>
+                Content of Screen 3
+            </div>
+            
+            <div id="screen4" class="screen" style="display:none;">
+                <div class="title-box">
+                    <h1>Button 4</h1>
+                </div>
+                Content of Screen 4
+            </div>
+            
+            <div id="screen5" class="screen" style="display:none;">
+                <div class="title-box">
+                    <h1>Button 5</h1>
+                </div>
+                Content of Screen 5
+            </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
     <script src="script.js"></script>
 </body>
 
