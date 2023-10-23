@@ -32,6 +32,9 @@ async function login() {
         // Hide login container and show home container
         document.getElementById('loginContainer').style.display = 'none';
         document.getElementById('homeContainer').style.display = 'block';
+        document.getElementById('headerContainer').style.display = 'block';
+        document.getElementById('sidebar').style.display = 'block';
+
     } else {
         console.log('Invalid Password');
         statusDiv.innerText = 'Invalid Password';
@@ -51,3 +54,48 @@ function showScreen(screenId) {
     // Display the chosen screen
     document.getElementById(screenId).style.display = 'block';
 }
+
+let currentMonth = new Date().getMonth();
+let currentYear = new Date().getFullYear();
+
+const dateEl = document.getElementById('dates');
+const monthYearEl = document.getElementById('current-month-year');
+
+document.getElementById('prev-month').addEventListener('click', function() {
+    currentMonth--;
+    if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+    }
+    updateCalendar();
+});
+
+document.getElementById('next-month').addEventListener('click', function() {
+    currentMonth++;
+    if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+    }
+    updateCalendar();
+});
+
+function daysInMonth(month, year) {
+    return new Date(year, month + 1, 0).getDate();
+}
+
+function updateCalendar() {
+    dateEl.innerHTML = '';
+    monthYearEl.innerText = new Date(currentYear, currentMonth).toLocaleString('default', { month: 'long' }) + ' ' + currentYear;
+    let days = daysInMonth(currentMonth, currentYear);
+    let firstDay = new Date(currentYear, currentMonth, 1).getDay();
+
+    for (let i = 0; i < firstDay; i++) {
+        dateEl.innerHTML += `<div></div>`;
+    }
+
+    for (let i = 1; i <= days; i++) {
+        dateEl.innerHTML += `<div>${i}</div>`;
+    }
+}
+
+updateCalendar();

@@ -10,89 +10,73 @@
 
 <body>
     <header>
-        <div class="header-container">
+        <div class="header-container" id="headerContainer" style="display: none;">
             <div class="logo">GOOD APP</div>
             <nav class="navbar">
                 <a href="#">Home</a>
                 <a href="#">About</a>
                 <a href="#">Services</a>
-                <!-- ... other links -->
+                <div class="notifications">
+                    <span class="notification-bell">🔔</span>
+                </div>
+                <div class="profile">
+                    <span class="profile-icon">👤</span>
+                </div>
             </nav>
-            <div class="notifications">
-                <span class="notification-bell">🔔</span>
-            </div>
-            <div class="profile">
-                <span class="profile-icon">👤</span>
-            </div>
         </div>
     </header>
-    <div class="login-container" id="loginContainer">
-        <div class="content-box">
-            <div class="title-box">
-                <h1>GOOD APP</h1>
-            </div>
-            <div class="login-box">
-                <h2>Login</h2>
-                <div class="textbox">
-                    <input type="text" placeholder="Username" name="username" id="username" required>
-                </div>
-                <div class="textbox">
-                    <input type="password" placeholder="Password" name="password" id="password" required>
-                </div>
-                <div class="login-status" id="loginStatus"></div>
-                <button class="login-btn" onclick="login()">Login</button>
+
+    <div class="clearfix">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar" style="display: none;">
+            <h2>Find Resident</h2>
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search...">
+                <button class="search-button">Search</button>
             </div>
         </div>
-    </div>
-    
-    <!-- New Home Screen (Initially hidden) -->
-    <div class="home-container" id="homeContainer" style="display: none;">
-        <div class="content-box">
-            <div class="title-box">
-                <h1>Home</h1>
-            </div>
-            <div class="buttons-box">
-                <button onclick="showScreen('screen1')">Button 1</button>
-                <button onclick="showScreen('screen2')">Button 2</button>
-                <button onclick="showScreen('screen3')">Button 3</button>
-                <button onclick="showScreen('screen4')">Button 4</button>
-                <button onclick="showScreen('screen5')">Button 5</button>
-            </div>
-            
-            <div id="screen1" class="screen" style="display:none;">
+
+        <!-- Login Container -->
+        <div class="login-container" id="loginContainer">
+            <div class="content-box">
                 <div class="title-box">
-                    <h1>Button 1</h1>
+                    <h1>GOOD APP</h1>
                 </div>
-                Content of Screen 1
-            </div>
-            
-            <div id="screen2" class="screen" style="display:none;">
-                <div class="title-box">
-                    <h1>Button 2</h1>
+                <div class="login-box">
+                    <h2>Login</h2>
+                    <div class="textbox">
+                        <input type="text" placeholder="Username" name="username" id="username" required>
+                    </div>
+                    <div class="textbox">
+                        <input type="password" placeholder="Password" name="password" id="password" required>
+                    </div>
+                    <div class="login-status" id="loginStatus"></div>
+                    <button class="login-btn" onclick="login()">Login</button>
                 </div>
-                Content of Screen 2
             </div>
-            
-            <div id="screen3" class="screen" style="display:none;">
-                <div class="title-box">
-                    <h1>Button 3</h1>
+        </div>
+
+        <!-- Home Container -->
+        <div class="home-container" id="homeContainer" style="display: none;">
+            <div id="calendar">
+                <div id="calendar-header">
+                    <button id="prev-month">←</button>
+                    <span id="current-month-year"></span>
+                    <button id="next-month">→</button>
                 </div>
-                Content of Screen 3
-            </div>
-            
-            <div id="screen4" class="screen" style="display:none;">
-                <div class="title-box">
-                    <h1>Button 4</h1>
+                <div id="days-of-week">
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
                 </div>
-                Content of Screen 4
+                <div id="dates"></div>
             </div>
-            
-            <div id="screen5" class="screen" style="display:none;">
-                <div class="title-box">
-                    <h1>Button 5</h1>
-                </div>
-                Content of Screen 5
-            </div>
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
