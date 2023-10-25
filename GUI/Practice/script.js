@@ -41,6 +41,13 @@ async function login() {
     }
 }
 
+function searchResident(){
+    const userInput = document.getElementById("username").value;
+    if (selectedDayBox && userInput) {
+        selectedDayBox.innerHTML = userInput; // Insert the input value into the selected day box
+    }
+}
+
 function showScreen(screenId) {
     // Hide all screens first
     const screens = document.querySelectorAll('.screen');
@@ -53,6 +60,25 @@ function showScreen(screenId) {
 
     // Display the chosen screen
     document.getElementById(screenId).style.display = 'block';
+}
+
+function daysInMonth(month, year) {
+    return new Date(year, month + 1, 0).getDate();
+}
+
+function updateCalendar() {
+    dateEl.innerHTML = '';
+    monthYearEl.innerText = new Date(currentYear, currentMonth).toLocaleString('default', { month: 'long' }) + ' ' + currentYear;
+    let days = daysInMonth(currentMonth, currentYear);
+    let firstDay = new Date(currentYear, currentMonth, 1).getDay();
+
+    for (let i = 0; i < firstDay; i++) {
+        dateEl.innerHTML += `<div></div>`;
+    }
+
+    for (let i = 1; i <= days; i++) {
+        dateEl.innerHTML += `<div>${i}</div>`;
+    }
 }
 
 let currentMonth = new Date().getMonth();
@@ -79,23 +105,17 @@ document.getElementById('next-month').addEventListener('click', function() {
     updateCalendar();
 });
 
-function daysInMonth(month, year) {
-    return new Date(year, month + 1, 0).getDate();
-}
+let selectedDayBox = null; // A variable to store the selected day box
 
-function updateCalendar() {
-    dateEl.innerHTML = '';
-    monthYearEl.innerText = new Date(currentYear, currentMonth).toLocaleString('default', { month: 'long' }) + ' ' + currentYear;
-    let days = daysInMonth(currentMonth, currentYear);
-    let firstDay = new Date(currentYear, currentMonth, 1).getDay();
-
-    for (let i = 0; i < firstDay; i++) {
-        dateEl.innerHTML += `<div></div>`;
+document.getElementById('dates').addEventListener('click', function(e) {
+    if (selectedDayBox) {
+        selectedDayBox.style.backgroundColor = ""; // Reset previously selected day's background
     }
-
-    for (let i = 1; i <= days; i++) {
-        dateEl.innerHTML += `<div>${i}</div>`;
+    
+    if (e.target.tagName === 'DIV') {
+        selectedDayBox = e.target;
+        selectedDayBox.style.backgroundColor = "#e9e9e9"; // Highlight the selected day
     }
-}
+});
 
 updateCalendar();
