@@ -42,9 +42,9 @@ async function login() {
 }
 
 function searchResident(){
-    const userInput = document.getElementById("username").value;
+    const userInput = document.getElementById("searchText").value;
     if (selectedDayBox && userInput) {
-        selectedDayBox.innerHTML = userInput; // Insert the input value into the selected day box
+        selectedDayBox.innerHTML += `<div class="added-content">${userInput}</div>`;
     }
 }
 
@@ -80,7 +80,6 @@ function updateCalendar() {
         dateEl.innerHTML += `<div>${i}</div>`;
     }
 }
-
 let currentMonth = new Date().getMonth();
 let currentYear = new Date().getFullYear();
 
