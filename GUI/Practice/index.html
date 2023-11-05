@@ -14,14 +14,20 @@
         <div class="header-container" id="headerContainer" style="display: none;">
             <div class="logo">GOOD APP</div>
             <nav class="navbar">
-                <a href="#">Home</a>
-                <a href="#">About</a>
-                <a href="#">Services</a>
-                <div class="notifications">
-                    <span class="notification-bell">🔔</span>
-                </div>
-                <div class="profile">
-                    <span class="profile-icon">👤</span>
+                <div class="navbar-content">
+                    <div class="navbar-links">
+                        <a href="#">Home</a>
+                        <a href="#">About</a>
+                        <a href="#">Services</a>
+                    </div>
+                    <div class="navbar-icons">
+                        <button class="icon-button notifications" aria-label="Notifications">
+                            <span class="notification-bell">🔔</span>
+                        </button>
+                        <button class="icon-button profile" aria-label="Profile">
+                            <span class="profile-icon">👤</span>
+                        </button>
+                    </div>                    
                 </div>
             </nav>
         </div>
@@ -34,7 +40,8 @@
             <!-- Search Bar -->
             <div class="search-container">
                 <input type="text" id="searchText" class="search-input" placeholder="Search...">
-                <button class="search-button" id="searchInput" onclick="searchResident()">Search</button>
+                <button class="search-button" id="searchButton" onclick="searchResident()">Search</button>
+                <div id="searchResult"></div> <!-- This is where the search results will be displayed -->
             </div>
         </div>
 

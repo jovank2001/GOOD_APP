@@ -42,9 +42,23 @@ async function login() {
 }
 
 function searchResident(){
-    const userInput = document.getElementById("searchText").value;
-    if (selectedDayBox && userInput) {
-        selectedDayBox.innerHTML += `<div class="added-content">${userInput}</div>`;
+    const searchInput = document.getElementById("searchText").value.trim();
+    const searchResultDiv = document.getElementById("searchResult");
+    const patient = patientDb.find(p => p.id.toString() === searchInput);
+    searchResultDiv.innerHTML = ''; // Clear previous results
+
+    if (patient) {
+        // Create a new button element for the patient
+        const patientButton = document.createElement('button');
+        patientButton.textContent = `ID: ${patient.id} - Name: ${patient.name}`;
+        patientButton.className = 'result-button'; // Assign a class for styling
+        patientButton.onclick = function() {
+            // Add an event handler for the button if needed
+            alert(`You selected patient ${patient.name} with ID ${patient.id}`);
+        };
+        searchResultDiv.appendChild(patientButton);
+    } else {
+        searchResultDiv.textContent = 'No resident found with that ID';
     }
 }
 
@@ -85,6 +99,14 @@ let currentYear = new Date().getFullYear();
 
 const dateEl = document.getElementById('dates');
 const monthYearEl = document.getElementById('current-month-year');
+
+const patientDb = [
+    { id: 1, name: 'Jovan Koledin' },
+    { id: 2, name: 'Evan Brammer' },
+    { id: 3, name: 'Cool Kid' },
+    { id: 4, name: 'Fun Kid' },
+    { id: 5, name: 'Lame Kid' },
+];
 
 document.getElementById('prev-month').addEventListener('click', function() {
     currentMonth--;

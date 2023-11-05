@@ -87,11 +87,9 @@ body, html {
     color: green;
 }
 
-/* ... Previous CSS ... */
-
 .header-container {
     display: flex;
-    flex-direction: column;  /* Stack children vertically */
+    flex-direction: column;
     padding: 15px 20px;
     background-color: #333;
     color: #FFF;
@@ -100,16 +98,28 @@ body, html {
 .logo {
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: auto; /* Pushes the logo to the top and navbar to the bottom */
+    margin-bottom: 15px; /* Give some space between the logo and the navbar */
 }
 
 .navbar {
     display: flex;
-    gap: 15px;
-    margin-top: 15px; /* Adds some spacing from the logo */
+    justify-content: space-between;
+    width: 100%;
 }
 
-.navbar a {
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: flex-end; /* Align items to the bottom */
+}
+
+.navbar-links {
+    display: flex;
+    gap: 15px;
+}
+
+.navbar-links a {
     color: #FFF;
     text-decoration: none;
     padding: 5px 10px;
@@ -117,22 +127,35 @@ body, html {
     font-size: large;
 }
 
-.navbar a:hover {
+.navbar-links a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+.navbar-icons {
+    display: flex;
+    gap: 15px;
+    font-size: 25px;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+}
+
+.icon-button:hover {
     background-color: #555;
     border-radius: 5px;
 }
 
 .notification-bell, .profile-icon {
-    font-size: 40px;
-    cursor: pointer;
-}
-
-.notifications{
-    margin-left: auto;
-} 
-
-.profile {
-    margin-left: 10px;
+    font-size: 25px; /* This size can be adjusted as needed */
 }
 
 .sidebar h1 {
@@ -251,4 +274,21 @@ body, html {
 
 .added-content:hover {
     background-color: #f0f0f0; /* Light gray background on hover to show interactivity */
+}
+
+.result-button {
+    display: block; /* Make the button a block element to take up the full width */
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding for sizing */
+    margin-top: 10px; /* Space above the button */
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to indicate it's clickable */
+    transition: background-color 0.3s ease; /* Transition for hover effect */
+}
+
+.result-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
 }
