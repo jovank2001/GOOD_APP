@@ -104,6 +104,10 @@ function toggleSidebar() {
     }
 }
 
+function createEvent(){
+    
+}
+
 document.getElementById('toggleSidebar').addEventListener('click', toggleSidebar);
 
 let currentMonth = new Date().getMonth();
