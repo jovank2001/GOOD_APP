@@ -33,7 +33,7 @@ async function login() {
         document.getElementById('loginContainer').style.display = 'none';
         document.getElementById('homeContainer').style.display = 'block';
         document.getElementById('headerContainer').style.display = 'block';
-        document.getElementById('sidebar').style.display = 'block';
+        document.getElementById('sidebarCollapsed').style.display = 'block';
 
     } else {
         console.log('Invalid Password');
@@ -94,6 +94,18 @@ function updateCalendar() {
         dateEl.innerHTML += `<div>${i}</div>`;
     }
 }
+
+function toggleSidebar() {
+    if ( document.getElementById('sidebar').style.display == 'block') {
+        document.getElementById('sidebar').style.display = 'none';
+    }
+    else{
+        document.getElementById('sidebar').style.display = 'block';
+    }
+}
+
+document.getElementById('toggleSidebar').addEventListener('click', toggleSidebar);
+
 let currentMonth = new Date().getMonth();
 let currentYear = new Date().getFullYear();
 
