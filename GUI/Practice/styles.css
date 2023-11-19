@@ -328,3 +328,18 @@ body, html {
     background-color: #0056b3;
 }
 
+#dateInput {
+    width: 90%;
+    padding: 10px;
+    border: black 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.eventName-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border: black 1px solid;
+}
