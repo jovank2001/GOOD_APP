@@ -3,9 +3,9 @@ async function login() {
     
     const db = [
         {
-            username: 'username',
+            username: 'u',
             // This should ideally be a hash of the password, but for simplicity, I'm keeping it as plain text here
-            password: 'password'
+            password: 'p'
         }
     ];
 
@@ -33,7 +33,6 @@ async function login() {
         document.getElementById('loginContainer').style.display = 'none';
         document.getElementById('homeContainer').style.display = 'block';
         document.getElementById('headerContainer').style.display = 'block';
-        document.getElementById('sidebarCollapsed').style.display = 'block';
 
     } else {
         console.log('Invalid Password');
@@ -104,8 +103,8 @@ function toggleSidebar() {
     }
 }
 
-function createEvent(){
-    
+function addEvent() {
+    console.log('Made it');
 }
 
 document.getElementById('toggleSidebar').addEventListener('click', toggleSidebar);
@@ -143,16 +142,5 @@ document.getElementById('next-month').addEventListener('click', function() {
 });
 
 let selectedDayBox = null; // A variable to store the selected day box
-
-document.getElementById('dates').addEventListener('click', function(e) {
-    if (selectedDayBox) {
-        selectedDayBox.style.backgroundColor = ""; // Reset previously selected day's background
-    }
-    
-    if (e.target.tagName === 'DIV') {
-        selectedDayBox = e.target;
-        selectedDayBox.style.backgroundColor = "#e9e9e9"; // Highlight the selected day
-    }
-});
 
 updateCalendar();

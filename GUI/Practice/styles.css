@@ -329,11 +329,12 @@ body, html {
 }
 
 #dateInput {
-    width: 90%;
+    width: 100%;
     padding: 10px;
     border: black 1px solid;
     border-radius: 5px;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 .eventName-input {
