@@ -263,7 +263,7 @@ body, html {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    width: 90%; /* Width relative to parent date box */
+    width: 87%; /* Width relative to parent date box */
     margin: 5px 0; /* Margins for spacing */
     border: 1px solid #333; /* Adds a rectangular border around the text */
     padding: 5px 10px; /* Padding for the button-like appearance */
