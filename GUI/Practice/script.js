@@ -102,12 +102,16 @@ function toggleSidebar() {
         document.getElementById('sidebar').style.display = 'block';
     }
 }
-//Should add eventName to selected date box
+//Reset selected date boxes background colors, add eventName to selected date boxes 
 function addEvent() {
     const eventName = document.getElementById("eventNameText").value;
-    if (selectedDayBox && eventName) {
-        selectedDayBox.innerHTML += `<div class="added-content">${eventName}</div>`;
+    if (selectedDayBoxes.length != 0 && eventName) {
+        selectedDayBoxes.forEach(function(box) {
+            box.style.backgroundColor = ""; // Reset the box background colors
+            box.innerHTML += `<div class="added-content">${eventName}</div>`; //Add  eventName to selected date boxes
+        });
     }
+    selectedDayBoxes = []; //Reset selected days
 }
 
 document.getElementById('toggleSidebar').addEventListener('click', toggleSidebar);
@@ -144,16 +148,16 @@ document.getElementById('next-month').addEventListener('click', function() {
     updateCalendar();
 });
 
-let selectedDayBox = null; // A variable to store the selected day box
+// Declare an array to store the clicked DIV elements
+var selectedDayBoxes = [];
 
 document.getElementById('dates').addEventListener('click', function(e) {
-    if (selectedDayBox) {
-        selectedDayBox.style.backgroundColor = ""; // Reset previously selected day's background
-    }
-    
     if (e.target.tagName === 'DIV') {
-        selectedDayBox = e.target;
-        selectedDayBox.style.backgroundColor = "#e9e9e9"; // Highlight the selected day
+        // Add the clicked DIV to the array
+        selectedDayBoxes.push(e.target);
+
+        // Optional: Highlight the selected day
+        e.target.style.backgroundColor = "#e9e9e9";
     }
 });
 updateCalendar();
