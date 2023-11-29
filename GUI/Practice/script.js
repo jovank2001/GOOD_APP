@@ -91,6 +91,14 @@ function updateCalendar() {
 
     for (let i = 1; i <= days; i++) {
         dateEl.innerHTML += `<div>${i}</div>`;
+        //Check if there is an existing event on the current day being added to calendar
+        events.forEach(function(event){
+            for (let j = 0; j < event.days.length; j++) {
+                if (event.days[j] === i && event.months[j] === currentMonth && event.years[j] === currentYear) {
+                    dateEl.innerHTML += `<div class="added-content">${event.name}</div>`; //Add  eventName to selected date boxes
+                }
+            }
+        });
     }
 }
 
@@ -102,15 +110,24 @@ function toggleSidebar() {
         document.getElementById('sidebar').style.display = 'block';
     }
 }
+
 //Reset selected date boxes background colors, add eventName to selected date boxes 
 function addEvent() {
     const eventName = document.getElementById("eventNameText").value;
+    var currEvent = {name: eventName, days: [], months: [], years: []};
+
     if (selectedDayBoxes.length != 0 && eventName) {
         selectedDayBoxes.forEach(function(box) {
+            //Add event details to current event
+            currEvent.days.push(box.innerText.trim());
+            currEvent.months.push(currentMonth);
+            currEvent.years.push(currentYear);
+
             box.style.backgroundColor = ""; // Reset the box background colors
             box.innerHTML += `<div class="added-content">${eventName}</div>`; //Add  eventName to selected date boxes
         });
     }
+    events.push(currEvent); //Add Event to events list
     selectedDayBoxes = []; //Reset selected days
 }
 
@@ -150,12 +167,14 @@ document.getElementById('next-month').addEventListener('click', function() {
 
 // Declare an array to store the clicked DIV elements
 var selectedDayBoxes = [];
+var events = [];
 
 document.getElementById('dates').addEventListener('click', function(e) {
     if (e.target.tagName === 'DIV') {
+        
         // Add the clicked DIV to the array
         selectedDayBoxes.push(e.target);
-
+        
         // Optional: Highlight the selected day
         e.target.style.backgroundColor = "#e9e9e9";
     }
