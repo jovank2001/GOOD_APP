@@ -178,6 +178,7 @@ body, html {
 }
 
 .search-button {
+    margin-top: 5px;
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -258,7 +259,7 @@ body, html {
     background-color: #e9e9e9;
 }
 
-.added-content {
+.added-event {
     font-size: 12px;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -273,7 +274,7 @@ body, html {
     transition: background-color 0.2s ease; /* Smooth transition for hover effect */
 }
 
-.added-content:hover {
+.added-event:hover {
     background-color: #f0f0f0; /* Light gray background on hover to show interactivity */
 }
 
@@ -309,32 +310,39 @@ body, html {
     /* Other sidebar styles */
 }
 
-.createEvent-container {
+.event-container {
     margin-top: 20px;
 }
 
 .createEvent-button {
+    margin-top: 5px;
     width: 100%;
     padding: 10px;
     border-radius: 5px;
     box-sizing: border-box;
     background-color: #007bff;
     color: #fff;
-    border: none;
+    border: black 1px solid;
     cursor: pointer;
 }
 
 .createEvent-button:hover {
     background-color: #0056b3;
 }
-
-#dateInput {
+.deleteEvent-button {
+    margin-top: 5px;
     width: 100%;
     padding: 10px;
-    border: black 1px solid;
     border-radius: 5px;
-    cursor: pointer;
     box-sizing: border-box;
+    background-color: #007bff;
+    color: #fff;
+    border: black 1px solid;
+    cursor: pointer;
+}
+
+.deleteEvent-button:hover {
+    background-color: #0056b3;
 }
 
 .eventName-input {

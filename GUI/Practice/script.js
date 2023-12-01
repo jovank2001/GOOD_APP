@@ -124,11 +124,22 @@ function addEvent() {
             currEvent.years.push(currentYear);
 
             box.style.backgroundColor = ""; // Reset the box background colors
-            box.innerHTML += `<div class="added-content">${eventName}</div>`; //Add  eventName to selected date boxes
+            box.innerHTML += `<div class="added-event">${eventName}</div>`; //Add  eventName to selected date boxes
         });
     }
     events.push(currEvent); //Add Event to events list
     selectedDayBoxes = []; //Reset selected days
+}
+
+function deleteEvent() {
+    if (selectedDayBoxes.length != 0) {
+        selectedDayBoxes.forEach(function(box) {
+            //Remove selected events
+            if (box.className == "added-event") {
+                box.remove();
+            }
+        });
+    }
 }
 
 document.getElementById('toggleSidebar').addEventListener('click', toggleSidebar);
