@@ -94,8 +94,8 @@ function updateCalendar() {
         //Check if there is an existing event on the current day being added to calendar
         events.forEach(function(event){
             for (let j = 0; j < event.days.length; j++) {
-                if (event.days[j] === i && event.months[j] === currentMonth && event.years[j] === currentYear) {
-                    dateEl.innerHTML += `<div class="added-content">${event.name}</div>`; //Add  eventName to selected date boxes
+                if (event.days[j] == i && event.months[j] == currentMonth && event.years[j] == currentYear) {
+                    dateEl.innerHTML += `<div class="added-event">${event.name}</div>`; //Add  eventName to selected date boxes
                 }
             }
         });
@@ -132,11 +132,22 @@ function addEvent() {
 }
 
 function deleteEvent() {
+    var delEventName = "";
+    var delEventDay = "";
+    var delEventMonth = "";
+    var delEventYear = "";
+
     if (selectedDayBoxes.length != 0) {
         selectedDayBoxes.forEach(function(box) {
-            //Remove selected events
             if (box.className == "added-event") {
+                //Remove selected event date from frontend
                 box.remove();
+
+                //Remove selected event from backend (all instances with this event name)
+                delEventName = box.innerHTML.trim();
+                console.log(events);
+                events = events.filter(item => item.name != delEventName);
+                console.log(events);
             }
         });
     }

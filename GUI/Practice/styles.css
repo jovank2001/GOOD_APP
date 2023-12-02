@@ -335,14 +335,14 @@ body, html {
     padding: 10px;
     border-radius: 5px;
     box-sizing: border-box;
-    background-color: #007bff;
+    background-color: red;
     color: #fff;
     border: black 1px solid;
     cursor: pointer;
 }
 
 .deleteEvent-button:hover {
-    background-color: #0056b3;
+    background-color: #d63107;
 }
 
 .eventName-input {
