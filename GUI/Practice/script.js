@@ -90,18 +90,20 @@ function updateCalendar() {
     }
 
     for (let i = 1; i <= days; i++) {
-        dateEl.innerHTML += `<div>${i}</div>`;
+        var noEvent = true;
         //Check if there is an existing event on the current day being added to calendar
         events.forEach(function(event){
             for (let j = 0; j < event.days.length; j++) {
-                console.log(event.days[j], i);
-                console.log(event.months[j], currentMonth);
-                console.log(event.years[j], currentYear);
                 if (event.days[j] == i && event.months[j] == currentMonth && event.years[j] == currentYear) {
                     dateEl.innerHTML += `<div>${i}<div class="added-event">${event.name}</div></div>`; //Add  eventName to selected date boxes
+                    noEvent = false;
                 }
             }
         });
+        if (noEvent){
+            dateEl.innerHTML += `<div>${i}</div>`;
+        }
+        noEvent = true;
     }
 }
 
