@@ -94,8 +94,11 @@ function updateCalendar() {
         //Check if there is an existing event on the current day being added to calendar
         events.forEach(function(event){
             for (let j = 0; j < event.days.length; j++) {
+                console.log(event.days[j], i);
+                console.log(event.months[j], currentMonth);
+                console.log(event.years[j], currentYear);
                 if (event.days[j] == i && event.months[j] == currentMonth && event.years[j] == currentYear) {
-                    dateEl.innerHTML += `<div class="added-event">${event.name}</div>`; //Add  eventName to selected date boxes
+                    dateEl.innerHTML += `<div>${i}<div class="added-event">${event.name}</div></div>`; //Add  eventName to selected date boxes
                 }
             }
         });
@@ -114,7 +117,7 @@ function toggleSidebar() {
 //Reset selected date boxes background colors, add eventName to selected date boxes 
 function addEvent() {
     const eventName = document.getElementById("eventNameText").value;
-    var currEvent = {name: eventName, days: [], months: [], years: []};
+    var currEvent = {name: eventName, days: [], months: [], years: [], boxes: []};
 
     if (selectedDayBoxes.length != 0 && eventName) {
         selectedDayBoxes.forEach(function(box) {
@@ -122,6 +125,8 @@ function addEvent() {
             currEvent.days.push(box.innerText.trim());
             currEvent.months.push(currentMonth);
             currEvent.years.push(currentYear);
+            currEvent.boxes.push(box);
+            console.log(currEvent);
 
             box.style.backgroundColor = ""; // Reset the box background colors
             box.innerHTML += `<div class="added-event">${eventName}</div>`; //Add  eventName to selected date boxes
