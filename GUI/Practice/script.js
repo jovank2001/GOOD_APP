@@ -78,7 +78,6 @@ function showScreen(screenId) {
 function daysInMonth(month, year) {
     return new Date(year, month + 1, 0).getDate();
 }
-
 function updateCalendar() {
     dateEl.innerHTML = '';
     monthYearEl.innerText = new Date(currentYear, currentMonth).toLocaleString('default', { month: 'long' }) + ' ' + currentYear;
@@ -118,13 +117,16 @@ function toggleSidebar() {
 
 //Reset selected date boxes background colors, add eventName to selected date boxes 
 function addEvent() {
+    var day = "";
     const eventName = document.getElementById("eventNameText").value;
     var currEvent = {name: eventName, days: [], months: [], years: [], boxes: []};
 
     if (selectedDayBoxes.length != 0 && eventName) {
         selectedDayBoxes.forEach(function(box) {
             //Add event details to current event
-            currEvent.days.push(box.innerText.trim());
+            day = box.innerText.trim();
+            day = day.replace(/\D/g, "");
+            currEvent.days.push(day);
             currEvent.months.push(currentMonth);
             currEvent.years.push(currentYear);
             currEvent.boxes.push(box);
