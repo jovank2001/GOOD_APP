@@ -90,15 +90,32 @@ function updateCalendar() {
 
     for (let i = 1; i <= days; i++) {
         var noEvent = true;
+        var num = i;
+        var AddedEvent = "A" + num.toString();
         //Check if there is an existing event on the current day being added to calendar
+        //If so, mark the day as one that needs evenets to be added to it
         events.forEach(function(event){
             for (let j = 0; j < event.days.length; j++) {
-                if (event.days[j] == i && event.months[j] == currentMonth && event.years[j] == currentYear) {
-                    dateEl.innerHTML += `<div>${i}<div class="added-event">${event.name}</div></div>`; //Add  eventName to selected date boxes
+                if (event.days[j] == i && event.months[j] == currentMonth && event.years[j] == currentYear && noEvent) {
+                    //dateEl.innerHTML += `<div id = ${AddedEvent}>${i}<div class="added-event">${event.name}</div></div>`; //Add  eventName to selected date boxes
+                    dateEl.innerHTML += `<div id = ${AddedEvent}>${i}</div>`; //Add  eventName to selected date boxes
                     noEvent = false;
                 }
             }
         });
+        //Add the event content to each date that has events
+        events.forEach(function(event){
+            for (let j = 0; j < event.days.length; j++) {
+                if (event.days[j] == i && event.months[j] == currentMonth && event.years[j] == currentYear) {
+                    var div = document.getElementById(AddedEvent);
+                    var p = document.createElement('p');
+                    p.className = 'added-event';
+                    p.textContent = event.name;
+                    div.appendChild(p);
+                }
+            }
+        });
+        
         if (noEvent){
             dateEl.innerHTML += `<div>${i}</div>`;
         }
